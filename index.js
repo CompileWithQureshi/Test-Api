@@ -62,9 +62,9 @@ app.put('/:id', (req, res) => {
         res.send(findData)
     }
 
-    const result = validateData(req.body)
-    if (result.error) {
-        res.status(400).send({ message: result.error.details[0].message })
+    const { error } = validateData(req.body)
+    if (error) {
+        res.status(400).send({ message: error.details[0].message })
     }
     findData.name(req.body.name)
     res.send(data)
@@ -76,8 +76,7 @@ const validateData = () => {
         age: Joi.number().min(2).required(),
 
     };
-    const result = Joi.validate(data, schema)
-    console.log(result.error);
+    return Joi.validate(data, schema)
 }
 
 app.listen(port, console.log(`server is on ${port}`))
