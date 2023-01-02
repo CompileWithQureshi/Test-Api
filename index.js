@@ -58,16 +58,16 @@ app.post('/send', (req, res) => {
 app.put('/:id', (req, res) => {
     const findData = data.find(c => c.id === parseInt(req.params.id))
     if (!findData) {
-        res.status(404).send({ message: `usernot found` })
+        res.status(404).send({ message: `user not found` })
         res.send(findData)
     }
 
     const { error } = validateData(req.body)
+    findData.name = req.body.name
+    res.send(findData)
     if (error) {
         res.status(400).send({ message: error.details[0].message })
     }
-    findData.name(req.body.name)
-    res.send(data)
 
 })
 const validateData = () => {
@@ -79,4 +79,16 @@ const validateData = () => {
     return Joi.validate(data, schema)
 }
 
+app.delete('/del/:id', (req, res) => {
+    const findData = data.find(c => c.id === parseInt(req.params.id))
+    if (!findData) {
+        res.status(404).send({ message: `user not found` })
+        res.send(findData)
+    }
+
+    const deletData = data.indexOf(findData)
+    data.splice(deletData, 1)
+
+    res.send(findData)
+})
 app.listen(port, console.log(`server is on ${port}`))
