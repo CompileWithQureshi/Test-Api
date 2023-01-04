@@ -55,7 +55,9 @@ app.put('/:id', (req, res) => {
     }
 
     findData.name = req.body.name
+    findData.age = req.body.age
     res.send(findData)
+    console.log({ ...findData })
     if (findData.error) {
         res.status(400).send({ message: findData.error.details[0].message })
     }
