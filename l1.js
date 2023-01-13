@@ -39,3 +39,29 @@ details.Address('Bengaluru')
 //Static 
 Student.Standard('BCA')
 
+//Inhertance in Class which shares its methods to another class
+//Based class
+class Employee {
+    constructor(pos, name, salary) {
+        this.pos = pos,
+            this.name = name,
+            this.salary = this.salary
+        console.log(`Empeloyee name: ${name} Empeloyee position is: ${pos} Empeloyee Salary is: ${salary}`);
+    }
+}
+
+let empeloyeeDeatils = new Employee('HR', 'Sajid', 25000)
+
+//Derived Class and we need to use super if there is  a constructore in base class
+class NewCommers extends Employee {
+    constructor() {
+        super(...data)
+        console.log(`We are new commers: ${data}`);
+    }
+}
+let data = ['Staff', 'Qureshi', 15000]
+let b = new NewCommers()
+
+
+//Promises 
+
