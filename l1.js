@@ -65,3 +65,19 @@ let b = new NewCommers()
 
 //Promises 
 
+//Compelete will give us boolean value
+let compelete = true
+const promise = new Promise((resolve, reject) => {
+
+    // If its is true resolve:Sucessfull
+    if (compelete) {
+        resolve('Sucessfull')
+    } else {
+
+        //If its false reject:Failed
+        reject('Failed')
+    }
+
+})
+
+console.log(promise);
