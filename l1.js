@@ -98,3 +98,53 @@ let pros = (link) => {
 }
 pros(url)
 
+//Promise all 
+
+let p1 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        console.log(`The first promise has resolved`);
+        resolve(10)
+    }, 1 * 1000)
+})
+let p2 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        console.log(`The secound promise has resolved`);
+        resolve(10)
+    }, 2 * 1000)
+})
+let p3 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        console.log(`The third promise has resolved`);
+        resolve(10)
+    }, 3 * 1000)
+})
+let p4 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        console.log(`The foruth promise has resolved`);
+        resolve(10)
+    }, 4 * 1000)
+})
+
+Promise.all([p1, p2, p3, p4]).then(result => console.log(result)).catch(e => console.error(e))
+
+//Async and await ES6
+
+const Test = async () => {
+    console.log(`2 :Message`);
+    console.log(`3 :Message`);
+    console.log(`4 :Message`);
+    await fetch('https://jsonplaceholder.typicode.com/todos/1').then(res => res.json()).then(json => console.log(json)).catch(e => console.log(e))
+    console.log(`6 :Message`);
+
+}
+
+console.log(`1 :Message`);
+Test()
+console.log(`7 :Message`);
+
+//Asycn and awit short hand 
+
+let Test2 = async () => {
+    return (await fetch('https://jsonplaceholder.typicode.com/todos')).json()
+}
+Test2().then(res => console.log(res)).catch(e => console.error(e))
