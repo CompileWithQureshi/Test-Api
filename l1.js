@@ -81,3 +81,20 @@ const promise = new Promise((resolve, reject) => {
 })
 
 console.log(promise);
+
+//Promise exer2
+let url = 'https://jsonplaceholder.typicode.com/todos'
+
+let pros = (link) => {
+    return new Promise((resolve, reject) => {
+        try {
+            resolve(fetch(link).then(res => res.json()).then(data => console.log(data)))
+
+        } catch (error) {
+
+            reject(e => console.log(e))
+        }
+    })
+}
+pros(url)
+
