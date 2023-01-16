@@ -148,3 +148,101 @@ let Test2 = async () => {
     return (await fetch('https://jsonplaceholder.typicode.com/todos')).json()
 }
 Test2().then(res => console.log(res)).catch(e => console.error(e))
+
+//Symbol data-type
+
+let x = Symbol('Hello')
+let y = Symbol('Hello')
+
+let typex = typeof (x.toString())
+let typey = typeof (y.description)
+let type = typeof (y.valueOf(typex))
+
+
+
+console.log(x);
+console.log(y);
+console.log(typex);
+console.log(typey);
+console.log(type);
+
+//Itearotrs
+
+var fruits = ['Apple', 'Orange', 'Grapes']
+//While loop
+let i = 0
+while (i < fruits.length) {
+
+    console.log(fruits[i]);
+    i++
+}
+console.log(fruits);
+
+//Do while
+let j = 0
+do {
+    console.log(fruits[j]);
+    j++
+} while (j < fruits.length);
+
+//For loop 
+
+let k = 0
+for (k = 0; k < fruits.length; k++) {
+    console.log(fruits[k]);
+}
+
+//For each
+fruits.forEach(element => {
+    console.log(element);
+});
+
+//For of 
+for (const fruit of fruits) {
+    console.log(fruit);
+}
+//For in
+for (const fruit in fruits) {
+    if (Object.hasOwnProperty.call(fruits, fruit)) {
+        const element = fruits[fruit];
+        console.log(element);
+    }
+}
+//For map
+
+fruits.map((fruit) => {
+    console.log(fruit);
+})
+
+
+//Iterators
+let itr = fruits[Symbol.iterator]()
+console.log(itr.next().value);
+console.log(itr.next().done);
+console.log(itr.next().value);
+
+//Generators we use in the function as * and there is a property as yeild which means pause
+
+function* test() {
+    console.log("First");
+    yield 'First'
+    console.log("Sec");
+    yield 'Secound'
+
+
+}
+
+let g = test()
+console.log(g.next());
+console.log(g.next());
+console.log(g.next());
+
+
+
+//Curring= When a function takes all arrgument once. in curring it takes one argument and give another function it goes on it all arrgument executed.
+const curring = (x) => {
+    return y => {
+        return z => x + y + z
+    }
+}
+console.log(curring(1)(1)(1));
