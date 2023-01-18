@@ -1,3 +1,34 @@
+//Call,Apply and Bind
+
+const student = {
+    firstName: 'Sajid',
+    lastName: 'Qureshi',
+    age: 22,
+
+
+}
+
+const teacher = {
+    firstName: 'Said',
+    lastName: 'Happy',
+    age: 20,
+}
+
+function getEmail(params) {
+    return this.email = `${this.firstName}.${this.lastName}@test.mail`
+
+}
+function addSubject(...data) {
+    return this.subject = data
+}
+console.log(getEmail.call(student));//Call use to call the funcion with object data in it
+console.log(addSubject.apply(student, ['Math', 'English', 'Science']));//Apply is to add additional data to object 
+
+let bindData = getEmail.bind(teacher)()
+
+console.log(bindData);
+
+
 //Spread Operator it give multiple values which is stored in a variable, array 
 const arr1 = [10, 20, 30]
 const arr2 = [...arr1]
@@ -83,7 +114,7 @@ const promise = new Promise((resolve, reject) => {
 console.log(promise);
 
 //Promise exer2
-let url = 'https://jsonplaceholder.typicode.com/todos'
+let url = 'https://jsonplaceholder.typicode.com/todos/2'
 
 let pros = (link) => {
     return new Promise((resolve, reject) => {
@@ -145,7 +176,7 @@ console.log(`7 :Message`);
 //Asycn and awit short hand 
 
 let Test2 = async () => {
-    return (await fetch('https://jsonplaceholder.typicode.com/todos')).json()
+    return (await fetch('https://jsonplaceholder.typicode.com/todos/3')).json()
 }
 Test2().then(res => console.log(res)).catch(e => console.error(e))
 
@@ -248,34 +279,6 @@ const curring = (x) => {
 console.log(curring(1)(1)(1));
 
 
-//Call,Apply and Bind
-
-const student = {
-    firstName: 'Sajid',
-    lastName: 'Qureshi',
-    age: 22,
-
-
-}
-
-const teacher = {
-    firstName: 'Said',
-    lastName: 'Happy',
-    age: 20,
-}
-
-function getEmail(params) {
-    return `${this.firstName}.${this.lastName}@test.mail`
-
-}
-function addSubject(...data) {
-    return console.log(data);
-}
-console.log(getEmail.call(student));//Call use to call the funcion with object data in it
-console.log(addSubject.apply(student, ['Math', 'English', 'Science']));//Apply is to add additional data to object 
-
-let bindData = getEmail.bind(teacher)()
-
-console.log(bindData);//Bind the data which is used later if we want to
+//Bind the data which is used later if we want to
 
 
