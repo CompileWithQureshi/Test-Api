@@ -246,3 +246,36 @@ const curring = (x) => {
     }
 }
 console.log(curring(1)(1)(1));
+
+
+//Call,Apply and Bind
+
+const student = {
+    firstName: 'Sajid',
+    lastName: 'Qureshi',
+    age: 22,
+
+
+}
+
+const teacher = {
+    firstName: 'Said',
+    lastName: 'Happy',
+    age: 20,
+}
+
+function getEmail(params) {
+    return `${this.firstName}.${this.lastName}@test.mail`
+
+}
+function addSubject(...data) {
+    return console.log(data);
+}
+console.log(getEmail.call(student));//Call use to call the funcion with object data in it
+console.log(addSubject.apply(student, ['Math', 'English', 'Science']));//Apply is to add additional data to object 
+
+let bindData = getEmail.bind(teacher)()
+
+console.log(bindData);//Bind the data which is used later if we want to
+
+
