@@ -282,3 +282,31 @@ console.log(curring(1)(1)(1));
 //Bind the data which is used later if we want to
 
 
+//Oject swallo copy and deep copy
+//swallo copy
+
+
+const obj = {
+    userName: 'Sajid',
+    address: {
+        city: 'Bengaluru',
+        state: 'Karnataka'
+    }
+}
+
+const User = { ...obj }
+User.userName = "Qureshi"
+
+let user = Object.assign({}, obj)
+
+
+console.log(user.userName);
+
+console.log(User.userName);
+
+
+
+//Deep copy
+
+const deepCopy = JSON.parse(JSON.stringify(obj))
+console.log(deepCopy);
